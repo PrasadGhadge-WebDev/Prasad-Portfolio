@@ -7,13 +7,21 @@ export default function About() {
       <div className="about-grid">
         <div className="about-text">
           <p>
-            I am a Master of Computer Applications (MCA) graduate with a strong interest in software engineering and Java Full Stack Development. My educational journey has equipped me with solid fundamentals in data structures, database management systems, and web architecture.
+            I am a Master of Computer Applications (MCA) graduate with a strong interest in software
+            engineering and Java Full Stack Development. My educational journey has equipped me with
+            solid fundamentals in data structures, database management systems, and web
+            architecture.
           </p>
           <p>
-            My passion is writing clean, scalable, and efficient code. I enjoy connecting backend databases with dynamic, interactive frontends, which led me to study both the enterprise Java stack (Servlets, JSP, Hibernate) and the modern MERN stack (MongoDB, Express, React, Node).
+            My passion is writing clean, scalable, and efficient code. I enjoy connecting backend
+            databases with dynamic, interactive frontends, which led me to study both the enterprise
+            Java stack (Servlets, JSP, Hibernate) and the modern MERN stack (MongoDB, Express,
+            React, Node).
           </p>
           <p>
-            As a fresher, my goal is to launch my career in a collaborative development environment where I can contribute to real-world applications, expand my skill set, and build impactful software solutions.
+            As a fresher, my goal is to launch my career in a collaborative development environment
+            where I can contribute to real-world applications, expand my skill set, and build
+            impactful software solutions.
           </p>
         </div>
         <div className="about-highlights">

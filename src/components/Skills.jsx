@@ -31,10 +31,7 @@ export default function Skills() {
               <span>{skill.level}</span>
             </div>
             <div className="skill-bar">
-              <div 
-                className="skill-progress" 
-                style={{ width: animate ? skill.level : '0%' }}
-              ></div>
+              <div className="skill-progress" style={{ width: animate ? skill.level : '0%' }}></div>
             </div>
           </div>
         ))}

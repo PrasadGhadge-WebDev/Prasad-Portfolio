@@ -4,20 +4,20 @@
 
 :root {
   /* DARK THEME (Default) */
-  --bg-base: 224, 30%, 6%;           /* Deep navy black */
-  --bg-card: 224, 25%, 11%;          /* Slightly lighter dark for cards */
-  --bg-nav: 224, 30%, 6%, 0.8;       /* Transparent navigation background */
-  
-  --color-primary: 217, 91%, 60%;    /* Tech Blue / Azure */
-  --color-secondary: 270, 95%, 68%;  /* Electric Purple */
-  --color-accent: 190, 100%, 50%;     /* Aqua Cyan */
-  --color-success: 150, 90%, 55%;    /* Neon Emerald */
-  
-  --text-primary: 210, 40%, 98%;     /* Off white */
-  --text-secondary: 215, 20%, 65%;   /* Muted gray */
-  --text-muted: 215, 15%, 45%;       /* Dark gray */
-  
-  --border-muted: 224, 20%, 18%;     /* Subtle border */
+  --bg-base: 224, 30%, 6%; /* Deep navy black */
+  --bg-card: 224, 25%, 11%; /* Slightly lighter dark for cards */
+  --bg-nav: 224, 30%, 6%, 0.8; /* Transparent navigation background */
+
+  --color-primary: 217, 91%, 60%; /* Tech Blue / Azure */
+  --color-secondary: 270, 95%, 68%; /* Electric Purple */
+  --color-accent: 190, 100%, 50%; /* Aqua Cyan */
+  --color-success: 150, 90%, 55%; /* Neon Emerald */
+
+  --text-primary: 210, 40%, 98%; /* Off white */
+  --text-secondary: 215, 20%, 65%; /* Muted gray */
+  --text-muted: 215, 15%, 45%; /* Dark gray */
+
+  --border-muted: 224, 20%, 18%; /* Subtle border */
   --border-active: 217, 91%, 60%, 0.3;
   --glow-opacity: 0.45;
 
@@ -35,20 +35,20 @@
 
 html[data-theme='light'] {
   /* LIGHT THEME */
-  --bg-base: 220, 20%, 97%;          /* Very light gray-blue */
-  --bg-card: 0, 0%, 100%;            /* Clean white */
+  --bg-base: 220, 20%, 97%; /* Very light gray-blue */
+  --bg-card: 0, 0%, 100%; /* Clean white */
   --bg-nav: 220, 20%, 97%, 0.8;
-  
-  --color-primary: 221, 83%, 53%;    /* Rich Royal Blue */
-  --color-secondary: 262, 83%, 58%;  /* Vivid Purple */
-  --color-accent: 190, 95%, 38%;     /* Deep Cyan */
-  --color-success: 142, 72%, 29%;    /* Emerald Green */
-  
-  --text-primary: 224, 40%, 12%;     /* Dark charcoal */
-  --text-secondary: 224, 15%, 35%;   /* Slate gray */
-  --text-muted: 224, 10%, 55%;       /* Light gray */
-  
-  --border-muted: 224, 12%, 88%;     /* Soft gray border */
+
+  --color-primary: 221, 83%, 53%; /* Rich Royal Blue */
+  --color-secondary: 262, 83%, 58%; /* Vivid Purple */
+  --color-accent: 190, 95%, 38%; /* Deep Cyan */
+  --color-success: 142, 72%, 29%; /* Emerald Green */
+
+  --text-primary: 224, 40%, 12%; /* Dark charcoal */
+  --text-secondary: 224, 15%, 35%; /* Slate gray */
+  --text-muted: 224, 10%, 55%; /* Light gray */
+
+  --border-muted: 224, 12%, 88%; /* Soft gray border */
   --border-active: 221, 83%, 53%, 0.2;
   --glow-opacity: 0.15;
 
@@ -60,7 +60,9 @@ html[data-theme='light'] {
   margin: 0;
   padding: 0;
   /* Smooth theme transitions */
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 body {
@@ -89,7 +91,12 @@ body {
 }
 
 /* Base Headings & Links */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   line-height: 1.2;
@@ -102,7 +109,9 @@ a {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-button, input, textarea {
+button,
+input,
+textarea {
   font-family: inherit;
 }
 
@@ -153,9 +162,15 @@ button, input, textarea {
 }
 
 @keyframes float-glow {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(4%, 5%) scale(1.1); }
-  100% { transform: translate(-3%, -4%) scale(0.95); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(4%, 5%) scale(1.1);
+  }
+  100% {
+    transform: translate(-3%, -4%) scale(0.95);
+  }
 }
 
 /* Sections */
@@ -250,7 +265,8 @@ button, input, textarea {
   padding: 6px 0;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover,
+.nav-link.active {
   color: hsl(var(--text-primary));
 }
 
@@ -265,7 +281,8 @@ button, input, textarea {
   transition: width 0.3s ease;
 }
 
-.nav-link:hover::after, .nav-link.active::after {
+.nav-link:hover::after,
+.nav-link.active::after {
   width: 100%;
 }
 
@@ -342,7 +359,11 @@ button, input, textarea {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, hsl(var(--color-primary)) 20%, hsl(var(--color-secondary)) 80%);
+  background: linear-gradient(
+    135deg,
+    hsl(var(--color-primary)) 20%,
+    hsl(var(--color-secondary)) 80%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -373,14 +394,17 @@ button, input, textarea {
 }
 
 .btn-primary {
-  background: transparent;
-  color: hsl(var(--text-primary));
+  background: linear-gradient(135deg, hsl(var(--color-primary)), hsl(var(--color-secondary)));
+  color: white;
   border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px hsl(var(--color-primary) / 0.3);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  color: hsl(var(--color-primary));
+  box-shadow: 0 6px 20px hsl(var(--color-primary) / 0.55);
+  color: white;
 }
 
 .btn-secondary {
@@ -415,8 +439,12 @@ button, input, textarea {
 }
 
 @keyframes rotate-dashed {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .hero-img {
@@ -429,7 +457,9 @@ button, input, textarea {
   position: relative;
   box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
   border: 4px solid hsl(var(--bg-card));
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .hero-img:hover {
@@ -755,7 +785,7 @@ button, input, textarea {
   border: 1px solid hsl(var(--border-muted));
   border-radius: 12px;
   padding: 40px;
-  box-shadow: 0 20px 40px -25px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 40px -25px rgba(0, 0, 0, 0.5);
   font-family: Arial, sans-serif; /* Mimic printable CV typography */
   color: #333333; /* CV dark color */
   background-color: #ffffff; /* White background for resume page */
@@ -951,7 +981,8 @@ textarea.form-control {
   max-width: 320px;
 }
 
-.footer-links-col h4, .footer-social-col h4 {
+.footer-links-col h4,
+.footer-social-col h4 {
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -1013,7 +1044,10 @@ textarea.form-control {
 
 /* Mobile Responsiveness */
 @media (max-width: 991px) {
-  .hero-grid, .about-grid, .resume-preview-container, .contact-grid {
+  .hero-grid,
+  .about-grid,
+  .resume-preview-container,
+  .contact-grid {
     grid-template-columns: 1fr;
     text-align: center;
     gap: 40px;
@@ -1112,7 +1146,8 @@ textarea.form-control {
   .menu-toggle.active span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
   }
-  .contact-form-container, .resume-preview-box {
+  .contact-form-container,
+  .resume-preview-box {
     padding: 24px;
   }
 }

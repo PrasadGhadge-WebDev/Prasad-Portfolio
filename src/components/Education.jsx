@@ -37,10 +37,7 @@ export default function Education() {
       <h2 className="section-title">Education</h2>
       <div className="timeline">
         {educationTimeline.map((edu, idx) => (
-          <div 
-            key={idx} 
-            className={`timeline-item timeline-item-${edu.side}`}
-          >
+          <div key={idx} className={`timeline-item timeline-item-${edu.side}`}>
             <div className="timeline-content">
               <div className="timeline-date">{edu.date}</div>
               <h3 className="timeline-role">{edu.role}</h3>
