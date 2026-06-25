@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 
 export default function Header({ theme, toggleTheme }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -9,7 +11,6 @@ export default function Header({ theme, toggleTheme }) {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      // Section tracking for active state
       const sections = [
         'home',
         'about',
@@ -17,7 +18,6 @@ export default function Header({ theme, toggleTheme }) {
         'projects',
         'education',
         'certifications',
-        'resume',
         'contact',
       ];
       const scrollPosition = window.scrollY + 120;
@@ -39,130 +39,116 @@ export default function Header({ theme, toggleTheme }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const closeMenu = () => setIsMenuOpen(false);
+  const navLinks = [
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'education', label: 'Education' },
+    { id: 'certifications', label: 'Certifications' },
+    { id: 'contact', label: 'Contact' },
+  ];
 
   return (
-    <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
-      <div className="nav-container">
-        <a href="#home" className="logo-text" onClick={closeMenu}>
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? 'nav-glass py-4 shadow-lg shadow-black/5' : 'bg-transparent py-6'
+      }`}
+    >
+      <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
+        {/* Logo / Brand Name */}
+        <a
+          href="#home"
+          className="text-2xl font-bold tracking-tight bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-500 bg-clip-text text-transparent hover:scale-105 transition-transform"
+        >
           PRASAD.G
         </a>
 
-        <div className="nav-right">
-          <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-            <li>
-              <a
-                href="#home"
-                className={`nav-link ${activeSection === 'home' ? 'active' : ''}`}
-                onClick={closeMenu}
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#about"
-                className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
-                onClick={closeMenu}
-              >
-                About
-              </a>
-            </li>
-            <li>
-              <a
-                href="#skills"
-                className={`nav-link ${activeSection === 'skills' ? 'active' : ''}`}
-                onClick={closeMenu}
-              >
-                Skills
-              </a>
-            </li>
-            <li>
-              <a
-                href="#projects"
-                className={`nav-link ${activeSection === 'projects' ? 'active' : ''}`}
-                onClick={closeMenu}
-              >
-                Projects
-              </a>
-            </li>
-            <li>
-              <a
-                href="#education"
-                className={`nav-link ${activeSection === 'education' ? 'active' : ''}`}
-                onClick={closeMenu}
-              >
-                Education
-              </a>
-            </li>
-            <li>
-              <a
-                href="#certifications"
-                className={`nav-link ${activeSection === 'certifications' ? 'active' : ''}`}
-                onClick={closeMenu}
-              >
-                Certs
-              </a>
-            </li>
-            <li>
-              <a
-                href="#resume"
-                className={`nav-link ${activeSection === 'resume' ? 'active' : ''}`}
-                onClick={closeMenu}
-              >
-                Resume
-              </a>
-            </li>
-            <li>
-              <a
-                href="#contact"
-                className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}
-                onClick={closeMenu}
-              >
-                Contact
-              </a>
-            </li>
+        {/* Desktop Navigation Links */}
+        <nav className="hidden md:flex items-center gap-8">
+          <ul className="flex items-center gap-6">
+            {navLinks.map((link) => (
+              <li key={link.id}>
+                <a
+                  href={`#${link.id}`}
+                  className={`relative text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400 ${
+                    activeSection === link.id
+                      ? 'text-blue-600 dark:text-blue-400 font-semibold'
+                      : 'text-slate-600 dark:text-slate-400'
+                  }`}
+                >
+                  {link.label}
+                  {activeSection === link.id && (
+                    <motion.div
+                      layoutId="activeIndicator"
+                      className="absolute bottom-[-6px] left-0 right-0 h-[2px] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </a>
+              </li>
+            ))}
           </ul>
 
           {/* Theme Toggle Button */}
           <button
             onClick={toggleTheme}
-            className="theme-toggle-btn"
-            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            className="p-2 rounded-lg bg-slate-200/50 hover:bg-slate-300/60 dark:bg-slate-800/40 border border-slate-300/80 dark:border-slate-700/50 transition-colors text-slate-700 dark:text-slate-300 cursor-pointer"
+            aria-label="Toggle theme"
           >
-            {theme === 'dark' ? (
-              /* Sun Icon for switching to Light Mode */
-              <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-                />
-              </svg>
-            ) : (
-              /* Moon Icon for switching to Dark Mode */
-              <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
-                />
-              </svg>
-            )}
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+        </nav>
+
+        {/* Mobile Nav Toggle */}
+        <div className="flex md:hidden items-center gap-4">
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg bg-slate-200/50 hover:bg-slate-300/60 dark:bg-slate-800/40 border border-slate-300/80 dark:border-slate-700/50 transition-colors text-slate-700 dark:text-slate-300 cursor-pointer"
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
 
           <button
-            className={`menu-toggle ${isMenuOpen ? 'active' : ''}`}
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="p-2 rounded-lg bg-slate-200/50 hover:bg-slate-300/60 dark:bg-slate-800/40 border border-slate-300/80 dark:border-slate-700/50 text-slate-700 dark:text-slate-300 transition-colors cursor-pointer"
+            aria-label="Toggle Menu"
           >
-            <span></span>
-            <span></span>
-            <span></span>
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu Panel */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="absolute top-full left-0 w-full bg-slate-50/95 dark:bg-[#030712]/95 backdrop-blur-lg border-b border-slate-200 dark:border-slate-800/80 md:hidden overflow-hidden"
+          >
+            <ul className="flex flex-col px-6 py-8 gap-4">
+              {navLinks.map((link) => (
+                <li key={link.id}>
+                  <a
+                    href={`#${link.id}`}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`block py-2 text-base font-medium border-l-2 pl-4 transition-all ${
+                      activeSection === link.id
+                        ? 'border-blue-600 text-blue-600 dark:border-blue-500 dark:text-blue-400 bg-blue-500/5'
+                        : 'border-transparent text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-900 dark:hover:text-slate-200'
+                    }`}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
